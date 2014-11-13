@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC126A5C1A14917400BC4BAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC126A5B1A14917400BC4BAD /* AppDelegate.swift */; };
+		AC126A5E1A14917400BC4BAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC126A5D1A14917400BC4BAD /* ViewController.swift */; };
+		AC126A611A14917400BC4BAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC126A5F1A14917400BC4BAD /* Main.storyboard */; };
+		AC126A631A14917400BC4BAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC126A621A14917400BC4BAD /* Images.xcassets */; };
+		AC126A661A14917400BC4BAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC126A641A14917400BC4BAD /* LaunchScreen.xib */; };
+		AC126A721A14917400BC4BAD /* VineVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC126A711A14917400BC4BAD /* VineVideoTests.swift */; };
+		AC126A7C1A1491AB00BC4BAD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC126A7B1A1491AB00BC4BAD /* AssetsLibrary.framework */; };
+		AC126A7E1A1491B000BC4BAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC126A7D1A1491B000BC4BAD /* AVFoundation.framework */; };
+		AC126A801A1491FF00BC4BAD /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC126A7F1A1491FF00BC4BAD /* CameraEngine.swift */; };
+		AC126A831A14920D00BC4BAD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC126A811A14920D00BC4BAD /* Logger.swift */; };
+		AC126A841A14920D00BC4BAD /* VideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC126A821A14920D00BC4BAD /* VideoWriter.swift */; };
+		AC126A861A1492A300BC4BAD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = AC126A851A1492A300BC4BAD /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC126A6C1A14917400BC4BAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC126A4E1A14917400BC4BAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC126A551A14917400BC4BAD;
+			remoteInfo = VineVideo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AC126A561A14917400BC4BAD /* VineVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VineVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC126A5A1A14917400BC4BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC126A5B1A14917400BC4BAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC126A5D1A14917400BC4BAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC126A601A14917400BC4BAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC126A621A14917400BC4BAD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AC126A651A14917400BC4BAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AC126A6B1A14917400BC4BAD /* VineVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VineVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC126A701A14917400BC4BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC126A711A14917400BC4BAD /* VineVideoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineVideoTests.swift; sourceTree = "<group>"; };
+		AC126A7B1A1491AB00BC4BAD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		AC126A7D1A1491B000BC4BAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AC126A7F1A1491FF00BC4BAD /* CameraEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
+		AC126A811A14920D00BC4BAD /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		AC126A821A14920D00BC4BAD /* VideoWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoWriter.swift; sourceTree = "<group>"; };
+		AC126A851A1492A300BC4BAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC126A531A14917400BC4BAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC126A7E1A1491B000BC4BAD /* AVFoundation.framework in Frameworks */,
+				AC126A7C1A1491AB00BC4BAD /* AssetsLibrary.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC126A681A14917400BC4BAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC126A4D1A14917400BC4BAD = {
+			isa = PBXGroup;
+			children = (
+				AC126A851A1492A300BC4BAD /* README.md */,
+				AC126A7D1A1491B000BC4BAD /* AVFoundation.framework */,
+				AC126A7B1A1491AB00BC4BAD /* AssetsLibrary.framework */,
+				AC126A581A14917400BC4BAD /* VineVideo */,
+				AC126A6E1A14917400BC4BAD /* VineVideoTests */,
+				AC126A571A14917400BC4BAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC126A571A14917400BC4BAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC126A561A14917400BC4BAD /* VineVideo.app */,
+				AC126A6B1A14917400BC4BAD /* VineVideoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC126A581A14917400BC4BAD /* VineVideo */ = {
+			isa = PBXGroup;
+			children = (
+				AC126A811A14920D00BC4BAD /* Logger.swift */,
+				AC126A821A14920D00BC4BAD /* VideoWriter.swift */,
+				AC126A7F1A1491FF00BC4BAD /* CameraEngine.swift */,
+				AC126A5B1A14917400BC4BAD /* AppDelegate.swift */,
+				AC126A5D1A14917400BC4BAD /* ViewController.swift */,
+				AC126A5F1A14917400BC4BAD /* Main.storyboard */,
+				AC126A621A14917400BC4BAD /* Images.xcassets */,
+				AC126A641A14917400BC4BAD /* LaunchScreen.xib */,
+				AC126A591A14917400BC4BAD /* Supporting Files */,
+			);
+			path = VineVideo;
+			sourceTree = "<group>";
+		};
+		AC126A591A14917400BC4BAD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC126A5A1A14917400BC4BAD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AC126A6E1A14917400BC4BAD /* VineVideoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC126A711A14917400BC4BAD /* VineVideoTests.swift */,
+				AC126A6F1A14917400BC4BAD /* Supporting Files */,
+			);
+			path = VineVideoTests;
+			sourceTree = "<group>";
+		};
+		AC126A6F1A14917400BC4BAD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC126A701A14917400BC4BAD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC126A551A14917400BC4BAD /* VineVideo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC126A751A14917400BC4BAD /* Build configuration list for PBXNativeTarget "VineVideo" */;
+			buildPhases = (
+				AC126A521A14917400BC4BAD /* Sources */,
+				AC126A531A14917400BC4BAD /* Frameworks */,
+				AC126A541A14917400BC4BAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VineVideo;
+			productName = VineVideo;
+			productReference = AC126A561A14917400BC4BAD /* VineVideo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC126A6A1A14917400BC4BAD /* VineVideoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC126A781A14917400BC4BAD /* Build configuration list for PBXNativeTarget "VineVideoTests" */;
+			buildPhases = (
+				AC126A671A14917400BC4BAD /* Sources */,
+				AC126A681A14917400BC4BAD /* Frameworks */,
+				AC126A691A14917400BC4BAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC126A6D1A14917400BC4BAD /* PBXTargetDependency */,
+			);
+			name = VineVideoTests;
+			productName = VineVideoTests;
+			productReference = AC126A6B1A14917400BC4BAD /* VineVideoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC126A4E1A14917400BC4BAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Takeshi Fujiki";
+				TargetAttributes = {
+					AC126A551A14917400BC4BAD = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					AC126A6A1A14917400BC4BAD = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = AC126A551A14917400BC4BAD;
+					};
+				};
+			};
+			buildConfigurationList = AC126A511A14917400BC4BAD /* Build configuration list for PBXProject "VineVideo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC126A4D1A14917400BC4BAD;
+			productRefGroup = AC126A571A14917400BC4BAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC126A551A14917400BC4BAD /* VineVideo */,
+				AC126A6A1A14917400BC4BAD /* VineVideoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC126A541A14917400BC4BAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC126A611A14917400BC4BAD /* Main.storyboard in Resources */,
+				AC126A661A14917400BC4BAD /* LaunchScreen.xib in Resources */,
+				AC126A631A14917400BC4BAD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC126A691A14917400BC4BAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC126A521A14917400BC4BAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC126A861A1492A300BC4BAD /* README.md in Sources */,
+				AC126A841A14920D00BC4BAD /* VideoWriter.swift in Sources */,
+				AC126A5E1A14917400BC4BAD /* ViewController.swift in Sources */,
+				AC126A5C1A14917400BC4BAD /* AppDelegate.swift in Sources */,
+				AC126A801A1491FF00BC4BAD /* CameraEngine.swift in Sources */,
+				AC126A831A14920D00BC4BAD /* Logger.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC126A671A14917400BC4BAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC126A721A14917400BC4BAD /* VineVideoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC126A6D1A14917400BC4BAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC126A551A14917400BC4BAD /* VineVideo */;
+			targetProxy = AC126A6C1A14917400BC4BAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC126A5F1A14917400BC4BAD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC126A601A14917400BC4BAD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC126A641A14917400BC4BAD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC126A651A14917400BC4BAD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC126A731A14917400BC4BAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC126A741A14917400BC4BAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC126A761A14917400BC4BAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VineVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AC126A771A14917400BC4BAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VineVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AC126A791A14917400BC4BAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VineVideoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VineVideo.app/VineVideo";
+			};
+			name = Debug;
+		};
+		AC126A7A1A14917400BC4BAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VineVideoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VineVideo.app/VineVideo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC126A511A14917400BC4BAD /* Build configuration list for PBXProject "VineVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC126A731A14917400BC4BAD /* Debug */,
+				AC126A741A14917400BC4BAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC126A751A14917400BC4BAD /* Build configuration list for PBXNativeTarget "VineVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC126A761A14917400BC4BAD /* Debug */,
+				AC126A771A14917400BC4BAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AC126A781A14917400BC4BAD /* Build configuration list for PBXNativeTarget "VineVideoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC126A791A14917400BC4BAD /* Debug */,
+				AC126A7A1A14917400BC4BAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC126A4E1A14917400BC4BAD /* Project object */;
+}
