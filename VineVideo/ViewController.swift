@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.cameraEngine.startup()
         
-        let videoLayer : AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.layerWithSession(self.cameraEngine.captureSession) as AVCaptureVideoPreviewLayer
+        let videoLayer = AVCaptureVideoPreviewLayer(session: self.cameraEngine.captureSession)
         videoLayer.frame = self.view.bounds
         videoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         self.view.layer.addSublayer(videoLayer)
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         self.startButton.setTitle("start", forState: .Normal)
         self.startButton.layer.cornerRadius = 20.0
         self.startButton.layer.position = CGPoint(x: self.view.bounds.width/5, y:self.view.bounds.height-50)
-        self.startButton.addTarget(self, action: "onClickStartButton:", forControlEvents: .TouchUpInside)
+        self.startButton.addTarget(self, action: #selector(ViewController.onClickStartButton(_:)), forControlEvents: .TouchUpInside)
         
         self.stopButton = UIButton(frame: CGRectMake(0,0,60,50))
         self.stopButton.backgroundColor = UIColor.grayColor()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         self.stopButton.setTitle("stop", forState: .Normal)
         self.stopButton.layer.cornerRadius = 20.0
         self.stopButton.layer.position = CGPoint(x: self.view.bounds.width/5 * 2, y:self.view.bounds.height-50)
-        self.stopButton.addTarget(self, action: "onClickStopButton:", forControlEvents: .TouchUpInside)
+        self.stopButton.addTarget(self, action: #selector(ViewController.onClickStopButton(_:)), forControlEvents: .TouchUpInside)
         
         self.pauseResumeButton = UIButton(frame: CGRectMake(0,0,60,50))
         self.pauseResumeButton.backgroundColor = UIColor.grayColor()
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         self.pauseResumeButton.setTitle("pause", forState: .Normal)
         self.pauseResumeButton.layer.cornerRadius = 20.0
         self.pauseResumeButton.layer.position = CGPoint(x: self.view.bounds.width/5 * 3, y:self.view.bounds.height-50)
-        self.pauseResumeButton.addTarget(self, action: "onClickPauseButton:", forControlEvents: .TouchUpInside)
+        self.pauseResumeButton.addTarget(self, action: #selector(ViewController.onClickPauseButton(_:)), forControlEvents: .TouchUpInside)
         
         self.view.addSubview(self.startButton)
         self.view.addSubview(self.stopButton);
