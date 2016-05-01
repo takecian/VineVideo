@@ -176,6 +176,7 @@
 		AC126A4E1A14917400BC4BAD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Takeshi Fujiki";
 				TargetAttributes = {
@@ -362,7 +363,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VineVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.takecian.vinevideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0fd5c5c9-68f4-4dad-87bc-81bbe287185d";
 			};
 			name = Debug;
 		};
@@ -372,7 +375,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VineVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.takecian.vinevideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0fd5c5c9-68f4-4dad-87bc-81bbe287185d";
 			};
 			name = Release;
 		};
@@ -429,6 +434,7 @@
 				AC126A771A14917400BC4BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC126A781A14917400BC4BAD /* Build configuration list for PBXNativeTarget "VineVideoTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +443,7 @@
 				AC126A7A1A14917400BC4BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,73 +17,73 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraEngine.startup()
+        cameraEngine.startup()
         
-        let videoLayer = AVCaptureVideoPreviewLayer(session: self.cameraEngine.captureSession)
-        videoLayer.frame = self.view.bounds
+        let videoLayer = AVCaptureVideoPreviewLayer(session: cameraEngine.captureSession)
+        videoLayer.frame = view.bounds
         videoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        self.view.layer.addSublayer(videoLayer)
+        view.layer.addSublayer(videoLayer)
         
-        self.setupButton()
+        setupButton()
     }
     
     func setupButton(){
-        self.startButton = UIButton(frame: CGRectMake(0,0,60,50))
-        self.startButton.backgroundColor = UIColor.redColor()
-        self.startButton.layer.masksToBounds = true
-        self.startButton.setTitle("start", forState: .Normal)
-        self.startButton.layer.cornerRadius = 20.0
-        self.startButton.layer.position = CGPoint(x: self.view.bounds.width/5, y:self.view.bounds.height-50)
-        self.startButton.addTarget(self, action: #selector(ViewController.onClickStartButton(_:)), forControlEvents: .TouchUpInside)
+        startButton = UIButton(frame: CGRectMake(0,0,60,50))
+        startButton.backgroundColor = UIColor.redColor()
+        startButton.layer.masksToBounds = true
+        startButton.setTitle("start", forState: .Normal)
+        startButton.layer.cornerRadius = 20.0
+        startButton.layer.position = CGPoint(x: view.bounds.width/5, y:view.bounds.height-50)
+        startButton.addTarget(self, action: #selector(ViewController.onClickStartButton(_:)), forControlEvents: .TouchUpInside)
         
-        self.stopButton = UIButton(frame: CGRectMake(0,0,60,50))
-        self.stopButton.backgroundColor = UIColor.grayColor()
-        self.stopButton.layer.masksToBounds = true
-        self.stopButton.setTitle("stop", forState: .Normal)
-        self.stopButton.layer.cornerRadius = 20.0
-        self.stopButton.layer.position = CGPoint(x: self.view.bounds.width/5 * 2, y:self.view.bounds.height-50)
-        self.stopButton.addTarget(self, action: #selector(ViewController.onClickStopButton(_:)), forControlEvents: .TouchUpInside)
+        stopButton = UIButton(frame: CGRectMake(0,0,60,50))
+        stopButton.backgroundColor = UIColor.grayColor()
+        stopButton.layer.masksToBounds = true
+        stopButton.setTitle("stop", forState: .Normal)
+        stopButton.layer.cornerRadius = 20.0
+        stopButton.layer.position = CGPoint(x: view.bounds.width/5 * 2, y:view.bounds.height-50)
+        stopButton.addTarget(self, action: #selector(ViewController.onClickStopButton(_:)), forControlEvents: .TouchUpInside)
         
-        self.pauseResumeButton = UIButton(frame: CGRectMake(0,0,60,50))
-        self.pauseResumeButton.backgroundColor = UIColor.grayColor()
-        self.pauseResumeButton.layer.masksToBounds = true
-        self.pauseResumeButton.setTitle("pause", forState: .Normal)
-        self.pauseResumeButton.layer.cornerRadius = 20.0
-        self.pauseResumeButton.layer.position = CGPoint(x: self.view.bounds.width/5 * 3, y:self.view.bounds.height-50)
-        self.pauseResumeButton.addTarget(self, action: #selector(ViewController.onClickPauseButton(_:)), forControlEvents: .TouchUpInside)
+        pauseResumeButton = UIButton(frame: CGRectMake(0,0,60,50))
+        pauseResumeButton.backgroundColor = UIColor.grayColor()
+        pauseResumeButton.layer.masksToBounds = true
+        pauseResumeButton.setTitle("pause", forState: .Normal)
+        pauseResumeButton.layer.cornerRadius = 20.0
+        pauseResumeButton.layer.position = CGPoint(x: view.bounds.width/5 * 3, y:view.bounds.height-50)
+        pauseResumeButton.addTarget(self, action: #selector(ViewController.onClickPauseButton(_:)), forControlEvents: .TouchUpInside)
         
-        self.view.addSubview(self.startButton)
-        self.view.addSubview(self.stopButton);
-        self.view.addSubview(self.pauseResumeButton);
+        view.addSubview(startButton)
+        view.addSubview(stopButton);
+        view.addSubview(pauseResumeButton);
     }
     
     func onClickStartButton(sender: UIButton){
-        if !self.cameraEngine.isCapturing {
-            self.cameraEngine.start()
-            self.changeButtonColor(self.startButton, color: UIColor.grayColor())
-            self.changeButtonColor(self.stopButton, color: UIColor.redColor())
+        if !cameraEngine.isCapturing {
+            cameraEngine.start()
+            changeButtonColor(startButton, color: UIColor.grayColor())
+            changeButtonColor(stopButton, color: UIColor.redColor())
         }
     }
     
     func onClickPauseButton(sender: UIButton){
-        if self.cameraEngine.isCapturing {
-            if self.cameraEngine.isPaused {
-                self.cameraEngine.resume()
-                self.pauseResumeButton.setTitle("pause", forState: .Normal)
-                self.pauseResumeButton.backgroundColor = UIColor.grayColor()
+        if cameraEngine.isCapturing {
+            if cameraEngine.isPaused {
+                cameraEngine.resume()
+                pauseResumeButton.setTitle("pause", forState: .Normal)
+                pauseResumeButton.backgroundColor = UIColor.grayColor()
             }else{
-                self.cameraEngine.pause()
-                self.pauseResumeButton.setTitle("resume", forState: .Normal)
-                self.pauseResumeButton.backgroundColor = UIColor.blueColor()
+                cameraEngine.pause()
+                pauseResumeButton.setTitle("resume", forState: .Normal)
+                pauseResumeButton.backgroundColor = UIColor.blueColor()
             }
         }
     }
     
     func onClickStopButton(sender: UIButton){
-        if self.cameraEngine.isCapturing {
-            self.cameraEngine.stop()
-            self.changeButtonColor(self.startButton, color: UIColor.redColor())
-            self.changeButtonColor(self.stopButton, color: UIColor.grayColor())
+        if cameraEngine.isCapturing {
+            cameraEngine.stop()
+            changeButtonColor(startButton, color: UIColor.redColor())
+            changeButtonColor(stopButton, color: UIColor.grayColor())
         }
     }
     

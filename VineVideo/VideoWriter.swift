@@ -16,16 +16,16 @@ class VideoWriter : NSObject{
     var audioInput: AVAssetWriterInput!
     
     init(fileUrl:NSURL!, height:Int, width:Int, channels:Int, samples:Float64){
-        self.fileWriter = try? AVAssetWriter(URL: fileUrl, fileType: AVFileTypeQuickTimeMovie)
+        fileWriter = try? AVAssetWriter(URL: fileUrl, fileType: AVFileTypeQuickTimeMovie)
         
         let videoOutputSettings: Dictionary<String, AnyObject> = [
             AVVideoCodecKey : AVVideoCodecH264,
             AVVideoWidthKey : width,
             AVVideoHeightKey : height
         ];
-        self.videoInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoOutputSettings)
-        self.videoInput.expectsMediaDataInRealTime = true
-        self.fileWriter.addInput(self.videoInput)
+        videoInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoOutputSettings)
+        videoInput.expectsMediaDataInRealTime = true
+        fileWriter.addInput(videoInput)
         
         let audioOutputSettings: Dictionary<String, AnyObject> = [
             AVFormatIDKey : Int(kAudioFormatMPEG4AAC),
@@ -33,36 +33,36 @@ class VideoWriter : NSObject{
             AVSampleRateKey : samples,
             AVEncoderBitRateKey : 128000
         ]
-        self.audioInput = AVAssetWriterInput(mediaType: AVMediaTypeAudio, outputSettings: audioOutputSettings)
-        self.audioInput.expectsMediaDataInRealTime = true
-        self.fileWriter.addInput(self.audioInput)
+        audioInput = AVAssetWriterInput(mediaType: AVMediaTypeAudio, outputSettings: audioOutputSettings)
+        audioInput.expectsMediaDataInRealTime = true
+        fileWriter.addInput(audioInput)
     }
     
     func write(sample: CMSampleBufferRef, isVideo: Bool){
         if CMSampleBufferDataIsReady(sample) {
-            if self.fileWriter.status == AVAssetWriterStatus.Unknown {
-                Logger.log("Start writing, isVideo = \(isVideo), status = \(self.fileWriter.status.rawValue)")
+            if fileWriter.status == AVAssetWriterStatus.Unknown {
+                Logger.log("Start writing, isVideo = \(isVideo), status = \(fileWriter.status.rawValue)")
                 let startTime = CMSampleBufferGetPresentationTimeStamp(sample)
-                self.fileWriter.startWriting()
-                self.fileWriter.startSessionAtSourceTime(startTime)
+                fileWriter.startWriting()
+                fileWriter.startSessionAtSourceTime(startTime)
             }
-            if self.fileWriter.status == AVAssetWriterStatus.Failed {
-                Logger.log("Error occured, isVideo = \(isVideo), status = \(self.fileWriter.status.rawValue), \(self.fileWriter.error!.localizedDescription)")
+            if fileWriter.status == AVAssetWriterStatus.Failed {
+                Logger.log("Error occured, isVideo = \(isVideo), status = \(fileWriter.status.rawValue), \(fileWriter.error!.localizedDescription)")
                 return
             }
             if isVideo {
-                if self.videoInput.readyForMoreMediaData {
-                    self.videoInput.appendSampleBuffer(sample)
+                if videoInput.readyForMoreMediaData {
+                    videoInput.appendSampleBuffer(sample)
                 }
             }else{
-                if self.audioInput.readyForMoreMediaData {
-                    self.audioInput.appendSampleBuffer(sample)
+                if audioInput.readyForMoreMediaData {
+                    audioInput.appendSampleBuffer(sample)
                 }
             }
         }
     }
     
     func finish(callback: Void -> Void){
-        self.fileWriter.finishWritingWithCompletionHandler(callback)
+        fileWriter.finishWritingWithCompletionHandler(callback)
     }
 }

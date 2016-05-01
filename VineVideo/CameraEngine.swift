@@ -33,12 +33,13 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
 
     func startup(){
         // video input
-        self.videoDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
+        videoDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
         
       
         do
         {
-            let videoInput = try AVCaptureDeviceInput(device: self.videoDevice) as AVCaptureDeviceInput
+            let videoInput = try AVCaptureDeviceInput(device: videoDevice) as AVCaptureDeviceInput
+            captureSession.addInput(videoInput)
         }
         catch let error as NSError {
             Logger.log(error.localizedDescription)
@@ -46,7 +47,8 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
 
         do
         {
-            let audioInput = try AVCaptureDeviceInput(device: self.audioDevice) as AVCaptureDeviceInput
+            let audioInput = try AVCaptureDeviceInput(device: audioDevice) as AVCaptureDeviceInput
+            captureSession.addInput(audioInput)
         }
         catch let error as NSError {
             Logger.log(error.localizedDescription)
@@ -54,31 +56,31 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
         
         
         // video output
-        var videoDataOutput = AVCaptureVideoDataOutput()
-        videoDataOutput.setSampleBufferDelegate(self, queue: self.recordingQueue)
+        let videoDataOutput = AVCaptureVideoDataOutput()
+        videoDataOutput.setSampleBufferDelegate(self, queue: recordingQueue)
         videoDataOutput.alwaysDiscardsLateVideoFrames = true
         videoDataOutput.videoSettings = [
             kCVPixelBufferPixelFormatTypeKey : Int(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
         ]
-        self.captureSession.addOutput(videoDataOutput)
+        captureSession.addOutput(videoDataOutput)
         
-        self.height = videoDataOutput.videoSettings["Height"] as! Int!
-        self.width = videoDataOutput.videoSettings["Width"] as! Int!
+        height = videoDataOutput.videoSettings["Height"] as! Int!
+        width = videoDataOutput.videoSettings["Width"] as! Int!
         
         // audio output
-        var audioDataOutput = AVCaptureAudioDataOutput()
-        audioDataOutput.setSampleBufferDelegate(self, queue: self.recordingQueue)
-        self.captureSession.addOutput(audioDataOutput)
+        let audioDataOutput = AVCaptureAudioDataOutput()
+        audioDataOutput.setSampleBufferDelegate(self, queue: recordingQueue)
+        captureSession.addOutput(audioDataOutput)
         
-        self.captureSession.startRunning()
+        captureSession.startRunning()
     }
     
     func shutdown(){
-        self.captureSession.stopRunning()
+        captureSession.stopRunning()
     }
 
     func start(){
-        dispatch_sync(self.lockQueue) {
+        dispatch_sync(lockQueue) {
             if !self.isCapturing{
                 Logger.log("in")
                 self.isPaused = false
@@ -213,7 +215,6 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0] as String
         let filePath : String = "\(documentsDirectory)/video\(self.fileIndex).mp4"
-        let fileURL : NSURL = NSURL(fileURLWithPath: filePath)
         return filePath
     }
     
