@@ -16,7 +16,7 @@ class VideoWriter : NSObject{
     var audioInput: AVAssetWriterInput!
     
     init(fileUrl:NSURL!, height:Int, width:Int, channels:Int, samples:Float64){
-        self.fileWriter = AVAssetWriter(URL: fileUrl, fileType: AVFileTypeQuickTimeMovie, error: nil)
+        self.fileWriter = try? AVAssetWriter(URL: fileUrl, fileType: AVFileTypeQuickTimeMovie)
         
         let videoOutputSettings: Dictionary<String, AnyObject> = [
             AVVideoCodecKey : AVVideoCodecH264,
@@ -28,7 +28,7 @@ class VideoWriter : NSObject{
         self.fileWriter.addInput(self.videoInput)
         
         let audioOutputSettings: Dictionary<String, AnyObject> = [
-            AVFormatIDKey : kAudioFormatMPEG4AAC,
+            AVFormatIDKey : Int(kAudioFormatMPEG4AAC),
             AVNumberOfChannelsKey : channels,
             AVSampleRateKey : samples,
             AVEncoderBitRateKey : 128000
@@ -39,7 +39,7 @@ class VideoWriter : NSObject{
     }
     
     func write(sample: CMSampleBufferRef, isVideo: Bool){
-        if CMSampleBufferDataIsReady(sample) != 0 {
+        if CMSampleBufferDataIsReady(sample) {
             if self.fileWriter.status == AVAssetWriterStatus.Unknown {
                 Logger.log("Start writing, isVideo = \(isVideo), status = \(self.fileWriter.status.rawValue)")
                 let startTime = CMSampleBufferGetPresentationTimeStamp(sample)
@@ -47,7 +47,7 @@ class VideoWriter : NSObject{
                 self.fileWriter.startSessionAtSourceTime(startTime)
             }
             if self.fileWriter.status == AVAssetWriterStatus.Failed {
-                Logger.log("Error occured, isVideo = \(isVideo), status = \(self.fileWriter.status.rawValue), \(self.fileWriter.error.localizedDescription)")
+                Logger.log("Error occured, isVideo = \(isVideo), status = \(self.fileWriter.status.rawValue), \(self.fileWriter.error!.localizedDescription)")
                 return
             }
             if isVideo {

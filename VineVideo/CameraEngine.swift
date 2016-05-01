@@ -34,24 +34,36 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
     func startup(){
         // video input
         self.videoDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
-        let videoInput = AVCaptureDeviceInput.deviceInputWithDevice(self.videoDevice, error: nil) as AVCaptureDeviceInput
-        self.captureSession.addInput(videoInput)
+        
+      
+        do
+        {
+            let videoInput = try AVCaptureDeviceInput(device: self.videoDevice) as AVCaptureDeviceInput
+        }
+        catch let error as NSError {
+            Logger.log(error.localizedDescription)
+        }
 
-        // audio input
-        let audioInput = AVCaptureDeviceInput.deviceInputWithDevice(self.audioDevice, error: nil)  as AVCaptureDeviceInput
-        self.captureSession.addInput(audioInput);
-
+        do
+        {
+            let audioInput = try AVCaptureDeviceInput(device: self.audioDevice) as AVCaptureDeviceInput
+        }
+        catch let error as NSError {
+            Logger.log(error.localizedDescription)
+        }
+        
+        
         // video output
         var videoDataOutput = AVCaptureVideoDataOutput()
         videoDataOutput.setSampleBufferDelegate(self, queue: self.recordingQueue)
         videoDataOutput.alwaysDiscardsLateVideoFrames = true
         videoDataOutput.videoSettings = [
-            kCVPixelBufferPixelFormatTypeKey : kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+            kCVPixelBufferPixelFormatTypeKey : Int(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
         ]
         self.captureSession.addOutput(videoDataOutput)
         
-        self.height = videoDataOutput.videoSettings["Height"] as Int!
-        self.width = videoDataOutput.videoSettings["Width"] as Int!
+        self.height = videoDataOutput.videoSettings["Height"] as! Int!
+        self.width = videoDataOutput.videoSettings["Width"] as! Int!
         
         // audio output
         var audioDataOutput = AVCaptureAudioDataOutput()
@@ -128,11 +140,14 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
             if self.videoWriter == nil && !isVideo {
                 let fileManager = NSFileManager()
                 if fileManager.fileExistsAtPath(self.filePath()) {
-                    fileManager.removeItemAtPath(self.filePath(), error: nil)
+                    do {
+                        try fileManager.removeItemAtPath(self.filePath())
+                    } catch _ {
+                    }
                 }
                 
                 let fmt = CMSampleBufferGetFormatDescription(sampleBuffer)
-                let asbd = CMAudioFormatDescriptionGetStreamBasicDescription(fmt)
+                let asbd = CMAudioFormatDescriptionGetStreamBasicDescription(fmt!)
                 
                 Logger.log("setup video writer")
                 self.videoWriter = VideoWriter(
@@ -150,10 +165,10 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
 
                 var pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
 
-                let isAudioPtsValid = self.lastAudioPts!.flags & CMTimeFlags.Valid
+                let isAudioPtsValid = self.lastAudioPts!.flags.intersect(CMTimeFlags.Valid)
                 if isAudioPtsValid.rawValue != 0 {
                     Logger.log("isAudioPtsValid is valid")
-                    let isTimeOffsetPtsValid = self.timeOffset.flags & CMTimeFlags.Valid
+                    let isTimeOffsetPtsValid = self.timeOffset.flags.intersect(CMTimeFlags.Valid)
                     if isTimeOffsetPtsValid.rawValue != 0 {
                         Logger.log("isTimeOffsetPtsValid is valid")
                         pts = CMTimeSubtract(pts, self.timeOffset);
@@ -171,7 +186,7 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
                         self.timeOffset = CMTimeAdd(self.timeOffset, offset);
                     }
                 }
-                self.lastAudioPts!.flags = CMTimeFlags.allZeros
+                self.lastAudioPts!.flags = CMTimeFlags()
                 self.isDiscontinue = false
             }
             
@@ -198,12 +213,12 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0] as String
         let filePath : String = "\(documentsDirectory)/video\(self.fileIndex).mp4"
-        let fileURL : NSURL = NSURL(fileURLWithPath: filePath)!
+        let fileURL : NSURL = NSURL(fileURLWithPath: filePath)
         return filePath
     }
     
     func filePathUrl() -> NSURL! {
-        return NSURL(fileURLWithPath: self.filePath())!
+        return NSURL(fileURLWithPath: self.filePath())
     }
     
     func ajustTimeStamp(sample: CMSampleBufferRef, offset: CMTime) -> CMSampleBufferRef {
@@ -217,8 +232,8 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
             info[i].presentationTimeStamp = CMTimeSubtract(info[i].presentationTimeStamp, offset);
         }
 
-        var out: Unmanaged<CMSampleBuffer>?
+        var out: CMSampleBuffer?
         CMSampleBufferCreateCopyWithNewTiming(nil, sample, count, &info, &out);
-        return out!.takeRetainedValue()
+        return out!
     }
 }
