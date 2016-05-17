@@ -1,3 +1,5 @@
+This project is integrated to https://github.com/takecian/video-examples-ios .
+
 # VineVideo
 
 This iOS application is sample app for creating Vine style video and written in swift.
