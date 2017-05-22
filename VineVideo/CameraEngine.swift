@@ -35,7 +35,6 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
         // video input
         videoDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
         
-      
         do
         {
             let videoInput = try AVCaptureDeviceInput(device: videoDevice) as AVCaptureDeviceInput
@@ -53,7 +52,6 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
         catch let error as NSError {
             Logger.log(error.localizedDescription)
         }
-        
         
         // video output
         let videoDataOutput = AVCaptureVideoDataOutput()
@@ -104,7 +102,7 @@ class CameraEngine : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVC
                         assetsLib.writeVideoAtPathToSavedPhotosAlbum(self.filePathUrl(), completionBlock: {
                             (nsurl, error) -> Void in
                             Logger.log("Transfer video to library finished.")
-                            self.fileIndex++
+                            self.fileIndex += 1
                         })
                     }
                 })
